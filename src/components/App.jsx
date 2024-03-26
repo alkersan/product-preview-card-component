@@ -7,8 +7,8 @@ import DesignOverlay from "./DesignOverlay.jsx";
 const App = () => {
   return (
     <>
-      <h1 className="visually-hidden">Product preview card component solution</h1>
       <Main>
+        <h1 className="visually-hidden">Product preview card component solution</h1>
         <ProductPreview />
         <DesignOverlay />
       </Main>
