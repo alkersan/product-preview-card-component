@@ -1,0 +1,192 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* GLOBAL STYLES */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  line-height: 1.2;
+  font-family: "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+#root {
+  /*Create a stacking context, without a z-index.*/
+  /*This ensures that all portal content (modals and tooltips) will*/
+  /*float above the app.*/
+  isolation: isolate;
+
+  --color-white: hsl(0deg 100% 100%);
+  --color-very-dark-blue: hsl(212deg 21% 14%);
+  --color-grayish-blue: hsl(228deg 12% 48%);
+  --color-dark-cyan: hsl(158deg 36% 37%);
+  --color-deep-cyan: hsl(157deg 43% 18%);
+  --color-cream: hsl(30deg 38% 92%);
+
+  --font-medium: 500;
+  --font-bold: 700;
+
+  --font-display: var(--font-bold) 2rem/2rem "Fraunces", serif;
+  --font-body: var(--font-medium) 0.875rem/23px "Montserrat", sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: fallback;
+  src: url("/fonts/montserrat.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: fallback;
+  src: url("/fonts/fraunces.woff2") format("woff2");
+}
