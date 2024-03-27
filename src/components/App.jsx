@@ -8,7 +8,6 @@ const App = () => {
   return (
     <>
       <Main>
-        <h1 className="visually-hidden">Product preview card component solution</h1>
         <ProductPreview />
         <DesignOverlay />
       </Main>
@@ -22,8 +21,6 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   min-height: 100%;
-
-  background-color: var(--color-cream);
 `;
 
 export default App;

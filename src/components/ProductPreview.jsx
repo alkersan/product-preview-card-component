@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import { QUERIES } from "../constants.js";
+import VisuallyHidden from "./VisuallyHidden.jsx";
 
 const ProductPreview = () => {
   return (
     <Wrapper>
-      <ProductDisplay>
-        <picture>
-          <source srcSet="image-product-desktop.jpg" media={QUERIES.tabletAndUp} />
-          <img src="image-product-mobile.jpg" alt="Photo of a perfume bottle" />
-        </picture>
-      </ProductDisplay>
+      <picture>
+        <source srcSet="image-product-desktop.jpg" media={QUERIES.tabletAndUp} />
+        <ProductImage src="image-product-mobile.jpg" alt="Photo of a perfume bottle" />
+      </picture>
       <Content>
         <Ribbon>Perfume</Ribbon>
         <Title>Gabrielle Essence Eau De Parfum</Title>
@@ -19,8 +18,14 @@ const ProductPreview = () => {
           for the House of CHANEL.
         </Description>
         <Prices>
-          <span>$149.99</span>
-          <s>$169.99</s>
+          <CurrentPrice>
+            <VisuallyHidden>Current price:</VisuallyHidden>
+            $149.99
+          </CurrentPrice>
+          <OriginalPrice>
+            <VisuallyHidden>Original price:</VisuallyHidden>
+            <s>$169.99</s>
+          </OriginalPrice>
         </Prices>
         <Button>
           <img src="icon-cart.svg" alt="" width="16" height="16" />
@@ -32,50 +37,37 @@ const ProductPreview = () => {
 };
 
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: ${375 / 16}rem;
-  margin-inline: 1rem;
+  max-width: ${600 / 16}rem;
+  margin: 1rem;
 
   background-color: var(--color-white);
   border-radius: 10px;
   overflow: clip;
 
-  display: flex;
-  flex-direction: column;
-
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   @media ${QUERIES.tabletAndUp} {
-    max-width: 37.5rem;
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
   }
 `;
 
-const ProductDisplay = styled.div`
-  flex: 50%;
-  img {
-    display: block;
-    height: 15rem;
-    width: 100%;
-    object-fit: cover;
-    @media ${QUERIES.tabletAndUp} {
-      height: 100%;
-    }
-  }
+const ProductImage = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const Content = styled.div`
-  flex: 50%;
-  padding: 24px;
-  color: var(--color-grayish-blue);
+  padding: 1.5rem;
   @media ${QUERIES.tabletAndUp} {
-    padding: 32px;
+    padding: 2rem;
   }
 `;
 
 const Ribbon = styled.p`
-  text-transform: uppercase;
   font-size: ${12 / 16}rem;
-  font-weight: var(--font-medium);
   letter-spacing: 5px;
+  text-transform: uppercase;
   line-height: normal;
 `;
 
@@ -96,24 +88,26 @@ const Description = styled.p`
   }
 `;
 
-const Prices = styled.p`
+const Prices = styled.div`
   margin-top: 24px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 1rem;
 
   @media ${QUERIES.tabletAndUp} {
     margin-top: 30px;
   }
+`;
 
-  span {
-    color: var(--color-dark-cyan);
-    font: var(--font-display);
-  }
-  s {
-    font: var(--font-body);
-    font-size: ${13 / 16}rem;
-  }
+const CurrentPrice = styled.p`
+  color: var(--color-dark-cyan);
+  font: var(--font-display);
+`;
+
+const OriginalPrice = styled.p`
+  font: var(--font-body);
+  font-size: ${13 / 16}rem;
 `;
 
 const Button = styled.button`
@@ -123,7 +117,7 @@ const Button = styled.button`
   }
 
   width: 100%;
-  border: none;
+  border: 0;
   cursor: pointer;
   border-radius: 8px;
   padding-block: 16px;
@@ -137,11 +131,11 @@ const Button = styled.button`
   line-height: revert;
 
   display: flex;
-  gap: 1ch;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
 
-  &:hover {
+  &:is(:hover, :focus) {
     background-color: var(--color-deep-cyan);
   }
 `;
